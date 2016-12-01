@@ -1,0 +1,67 @@
+<html>
+<head>
+  <title>home</title>
+  <link href="{{ url_for('static', filename='bootstrap.min.css') }}"  rel="stylesheet" />
+  <style>
+    body{ padding-top: 50px; }
+    #content { width: 580px; float: left; margin-right: 20px; padding:  20px; }
+   </style>
+  </head>
+<body>
+
+    <nav class="navbar navbar-inverse navbar-fixed-top">
+    <div class="container">
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle collapsed"
+        data-toggle="collapse" data-target="#navbar" aria-expanded="false"
+        aria-controls="navbar">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="#">Coursework2</a>
+      </div>
+      <div id="navbar" class="collapse navbar-collapse">
+      <ul class="nav navbar-nav">
+        <li class="active"><a href="home">Home</a></li>
+        <li><a href="history">History</a></li>
+        <li><a href="tickets">Book Tickets</a></li>
+        <li><a href="contact">Contact</a></li>
+        <li><a href="login">Login</a></li>
+      </ul>
+      </div>
+    </div>
+    </nav>
+
+     {% block content %}
+      <div id="content">
+        <h2>Latest News</h2>
+        <p class="lead">Our team won the last game 2-0</p>
+      </div>
+
+      <div id="content">
+        <h2>Match Center</h2>
+        <p class="lead">Next Game</p>
+        <p class="lead">Team1 vs Team2</p>
+        <form method="get" action='/tickets/'>
+          <button type="submit">Book tickets</button>
+        </form>
+      </div>
+
+      <div id="content">
+        <h2>Photo Gallery</h2>
+        <img src="static/football.jpg" alt="football">
+
+        {% endblock %}
+    
+    {% for message in get_flashed_messages() %}
+      {{ message }}
+    {% endfor %}
+
+
+   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+   <script src={{ url_for('static', filename='bootstrap.min.js') }}"></script>
+</body>
+</html>
+
